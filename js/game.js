@@ -11,7 +11,9 @@ const gameStates = {
   Paused: 0,
   Running: 1,
   Menu: 2,
-  GameOver: 3
+  GameOver: 3,
+  NewLevel: 4,
+  YouWin: 5
 };
 
 let gameManager = new GameManager(gameWidth, gameHeight);

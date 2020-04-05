@@ -7,24 +7,38 @@ class GameManager {
     this.playerPaddle = new PlayerPaddle(this);
     this.inputHandler = new InputHandler(this.playerPaddle, this);
     this.playerLives = 3;
+    this.bricks = [];
+    this.levels = [level1, level2];
+    this.currentLevel = 0;
   }
   startGame() {
-    if(this.gameState !== gameStates.Menu) {
+    if(this.gameState !== gameStates.Menu && this.gameState !== gameStates.NewLevel) {
       return;
     }
-    let bricks = buildLevel(this, level1);
-    this.gameObjects = [this.playerPaddle, this.gameBall, ...bricks];
+    this.bricks = buildLevel(this, this.levels[this.currentLevel]);
+    this.gameBall.reset();
+    this.gameObjects = [this.playerPaddle, this.gameBall];
     this.gameState = gameStates.Running;
   }
   update(deltaTime) {
-    if(this.playerLives === 0) {
-      this.gameState = gameStates.GameOver;
-    }
     if(this.gameState != gameStates.Running) {
       return;
     }
-    this.gameObjects.forEach((gameObject) => gameObject.update(deltaTime));
-    this.gameObjects = this.gameObjects.filter(object => !object.markedForDelete);
+    if(this.playerLives === 0) {
+      this.gameState = gameStates.GameOver;
+    }
+    if(this.bricks.length === 0) {
+      this.currentLevel++;
+      if(this.currentLevel < this/this.levels.length) {
+        this.gameState = gameStates.NewLevel;
+        this.startGame();
+      } else {
+        this.gameState = gameStates.GameOver;
+      }
+      
+    }
+    [...this.gameObjects, ...this.bricks].forEach((gameObject) => gameObject.update(deltaTime));
+    this.bricks = this.bricks.filter(object => !object.markedForDelete);
   }
   draw(context) {
     if(this.gameState === gameStates.Paused){
@@ -52,7 +66,7 @@ class GameManager {
       context.textAlign = "center";
       context.fillText("Game Over", this.gameWidth /2, this.gameHeight / 2);
     } else {
-      this.gameObjects.forEach((gameObject) => gameObject.draw(context));
+      [...this.gameObjects, ...this.bricks].forEach((gameObject) => gameObject.draw(context));
     }
     
   }
