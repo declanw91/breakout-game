@@ -23,11 +23,7 @@ class Ball {
       this.speed.y = -this.speed.y;
     }
     //collision detection player paddle
-    let ballBottom = this.position.y + this.size;
-    let topofPlayerPaddle = this.game.playerPaddle.position.y;
-    let playerPaddleLeft = this.game.playerPaddle.position.x;
-    let playerPaddleRight = this.game.playerPaddle.position.x + this.game.playerPaddle.width;
-    if(ballBottom >= topofPlayerPaddle && this.position.x >= playerPaddleLeft && this.position.x <= playerPaddleRight) {
+    if(detectCollision(this, this.game.playerPaddle)) {
       this.speed.y = -this.speed.y;
     }
   }

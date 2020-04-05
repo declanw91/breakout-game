@@ -2,7 +2,7 @@ class PlayerPaddle {
   constructor(game) {
     this.gameWidth = game.gameWidth;
     this.width = 50;
-    this.height = 5;
+    this.height = 15;
     this.maxSpeed = 5;
     this.speed = 0;
     this.position = {
