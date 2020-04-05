@@ -2,7 +2,7 @@ class Ball {
   constructor(game) {
     this.image = document.getElementById('gameBall');
     this.speed = {x: 2, y: 2};
-    this.position = {x: 10, y: 10};
+    this.position = {x: 100, y: 100};
     this.gameWidth = game.gameWidth;
     this.gameHeight = game.gameHeight;
     this.size = this.image.naturalWidth;

@@ -8,7 +8,6 @@ const level1 = [
 function buildLevel(game, level) {
   let bricks = [];
   level.forEach((row, rowIndex) => {
-    console.log(row);
     row.forEach((brick, brickIndex) => {
       if(brick === 1) {
         let brick = new Brick(game);

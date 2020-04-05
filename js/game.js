@@ -7,6 +7,13 @@ canvas.height = (window.innerHeight  / 100) * 75;
 let gameWidth = canvas.width;
 let gameHeight = canvas.height;
 
+const gameStates = {
+  Paused: 0,
+  Running: 1,
+  Menu: 2,
+  GameOver: 3
+};
+
 let gameManager = new GameManager(gameWidth, gameHeight);
 gameManager.startGame();
 
