@@ -7,12 +7,8 @@ canvas.height = (window.innerHeight  / 100) * 75;
 let gameWidth = canvas.width;
 let gameHeight = canvas.height;
 
-let playerPaddle = new PlayerPaddle(gameWidth, gameHeight);
-playerPaddle.draw(context);
-
-let inputHandler = new InputHandler(playerPaddle);
-
-let gameBall = new Ball();
+let gameManager = new GameManager(gameWidth, gameHeight);
+gameManager.startGame();
 
 let lastTime = 0;
 
@@ -20,9 +16,8 @@ function GameLoop(timestamp) {
   let deltaTime = timestamp - lastTime;
   lastTime = timestamp;
   context.clearRect(0, 0, canvas.width, canvas.height);
-  playerPaddle.update(deltaTime);
-  playerPaddle.draw(context);
-  gameBall.draw(context);
+  gameManager.update(deltaTime);
+  gameManager.draw(context);
   requestAnimationFrame(GameLoop);
 }
 

@@ -1,13 +1,13 @@
 class PlayerPaddle {
-  constructor(gameWidth, gameHeight) {
-    this.gameWidth = gameWidth;
+  constructor(game) {
+    this.gameWidth = game.gameWidth;
     this.width = 50;
     this.height = 5;
     this.maxSpeed = 5;
     this.speed = 0;
     this.position = {
-      x: gameWidth / 2 - this.width / 2,
-      y: gameHeight - this.height - 5
+      x: game.gameWidth / 2 - this.width / 2,
+      y: game.gameHeight - this.height - 5
     };
   }
   draw(context) {
