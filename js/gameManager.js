@@ -6,6 +6,7 @@ class GameManager {
     this.gameBall = new Ball(this);
     this.playerPaddle = new PlayerPaddle(this);
     this.inputHandler = new InputHandler(this.playerPaddle, this);
+    this.playerLives = 3;
   }
   startGame() {
     if(this.gameState !== gameStates.Menu) {
@@ -16,6 +17,9 @@ class GameManager {
     this.gameState = gameStates.Running;
   }
   update(deltaTime) {
+    if(this.playerLives === 0) {
+      this.gameState = gameStates.GameOver;
+    }
     if(this.gameState != gameStates.Running) {
       return;
     }
@@ -39,6 +43,14 @@ class GameManager {
       context.fillStyle = '#FFFFFF';
       context.textAlign = "center";
       context.fillText("Press Space to Begin", this.gameWidth /2, this.gameHeight / 2);
+    } else if(this.gameState === gameStates.GameOver){
+      context.rect(0, 0, this.gameWidth, this.gameHeight);
+      context.fillStyle = "rgba(0, 0, 0, 0.5)";
+      context.fill();
+      context.font = "13px Arial";
+      context.fillStyle = '#FFFFFF';
+      context.textAlign = "center";
+      context.fillText("Game Over", this.gameWidth /2, this.gameHeight / 2);
     } else {
       this.gameObjects.forEach((gameObject) => gameObject.draw(context));
     }
