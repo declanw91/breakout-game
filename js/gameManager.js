@@ -8,13 +8,7 @@ class GameManager {
     this.playerPaddle.draw(context);
     this.inputHandler = new InputHandler(this.playerPaddle);
     this.gameBall = new Ball(this);
-    let bricks = [];
-    for (var i = 0; i < 10; i++) {
-      let brick = new Brick(this);
-      let brickPosition = {x: i * brick.width, y: 30};
-      brick.position = brickPosition;
-      bricks.push(brick);
-    }
+    let bricks = buildLevel(this, level1);
     this.gameObjects = [this.playerPaddle, this.gameBall, ...bricks];
   }
   update(deltaTime) {
