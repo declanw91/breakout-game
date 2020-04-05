@@ -3,3 +3,11 @@
   height: 75%;
   border: 1px solid #000000;
 }
+
+#gameWrapper, #pageHeaderWrapper {
+  text-align: center;
+}
+
+#gameBall {
+  display: none;
+}
