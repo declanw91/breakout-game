@@ -1,13 +1,27 @@
+body {
+  background-image: url('../images/game-icons-background.png');
+  background-repeat: repeat, repeat;
+}
+
 #gameArea {
   width: 75%;
   height: 75%;
   border: 1px solid #000000;
+  background: #FFFFFF;
 }
 
 #gameWrapper, #pageHeaderWrapper {
   text-align: center;
 }
 
+#pageHeaderWrapper {
+  background: #FFFFFF;
+}
+
 #gameBall, #gameBrick {
   display: none;
+}
+
+#controlList {
+  list-style: none;
 }
