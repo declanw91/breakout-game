@@ -15,7 +15,6 @@ const gameStates = {
 };
 
 let gameManager = new GameManager(gameWidth, gameHeight);
-gameManager.startGame();
 
 let lastTime = 0;
 
