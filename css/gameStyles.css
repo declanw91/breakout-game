@@ -8,6 +8,6 @@
   text-align: center;
 }
 
-#gameBall {
+#gameBall, #gameBrick {
   display: none;
 }
