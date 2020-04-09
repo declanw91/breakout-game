@@ -10,18 +10,19 @@ body {
   background: #FFFFFF;
 }
 
-#gameWrapper, #pageHeaderWrapper {
+#gameWrapper {
   text-align: center;
 }
 
-#pageHeaderWrapper {
-  background: #FFFFFF;
+#pageHeaderWrapper, #gameFooter {
+  background: #f7f7f7;
+  text-align: center;
 }
 
-#gameBall, #gameBrick {
+img {
   display: none;
 }
 
-#controlList {
+ul {
   list-style: none;
 }

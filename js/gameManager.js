@@ -15,7 +15,7 @@ class GameManager {
     if(this.gameState !== gameStates.Menu && this.gameState !== gameStates.NewLevel) {
       return;
     }
-    this.bricks = buildLevel(this, this.levels[this.currentLevel]);
+    this.bricks = buildLevel(this, null);
     this.gameBall.reset();
     this.playerPaddle.reset();
     this.gameObjects = [this.playerPaddle, this.gameBall];
