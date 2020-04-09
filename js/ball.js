@@ -5,6 +5,7 @@ class Ball {
     this.gameHeight = game.gameHeight;
     this.size = this.image.naturalWidth;
     this.game = game;
+    this.defaultSpeed = {x: 2, y: 2};
     this.reset();
   }
   draw(context) {
