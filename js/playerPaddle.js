@@ -1,6 +1,7 @@
 class PlayerPaddle {
   constructor(game) {
     this.gameWidth = game.gameWidth;
+    this.defaultWidth = 50;
     this.width = 50;
     this.height = 15;
     this.maxSpeed = 5;
@@ -32,5 +33,8 @@ class PlayerPaddle {
   }
   stop() {
     this.speed = 0;
+  }
+  reset() {
+    this.width = this.defaultWidth;
   }
 }

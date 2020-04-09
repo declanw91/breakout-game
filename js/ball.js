@@ -24,6 +24,7 @@ class Ball {
     //collision detection - bottom wall
     if(this.position.y + this.size > this.gameHeight) {
       this.game.playerLives--;
+      this.game.playerPaddle.reset();
       this.reset();
     }
     //collision detection player paddle
