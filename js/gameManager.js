@@ -12,12 +12,13 @@ class GameManager {
     this.currentLevel = 0;
   }
   startGame() {
-    if(this.gameState !== gameStates.Menu && this.gameState !== gameStates.NewLevel) {
+    if(this.gameState !== gameStates.Menu && this.gameState !== gameStates.NewLevel && this.gameState !== gameStates.GameOver) {
       return;
     }
     this.bricks = buildLevel(this, null);
     this.gameBall.reset();
     this.playerPaddle.reset();
+    this.playerLives = 3;
     this.gameObjects = [this.playerPaddle, this.gameBall];
     this.gameState = gameStates.Running;
   }
@@ -43,29 +44,11 @@ class GameManager {
   }
   draw(context) {
     if(this.gameState === gameStates.Paused){
-      context.rect(0, 0, this.gameWidth, this.gameHeight);
-      context.fillStyle = "rgba(0, 0, 0, 0.5)";
-      context.fill();
-      context.font = "13px Arial";
-      context.fillStyle = '#FFFFFF';
-      context.textAlign = "center";
-      context.fillText("Paused", this.gameWidth /2, this.gameHeight / 2);
+      this.showPauseScreen(context);
     } else if(this.gameState === gameStates.Menu){
-      context.rect(0, 0, this.gameWidth, this.gameHeight);
-      context.fillStyle = "rgba(0, 0, 0, 0.5)";
-      context.fill();
-      context.font = "13px Arial";
-      context.fillStyle = '#FFFFFF';
-      context.textAlign = "center";
-      context.fillText("Press Space to Begin", this.gameWidth /2, this.gameHeight / 2);
+      this.showGameMenu(context);
     } else if(this.gameState === gameStates.GameOver){
-      context.rect(0, 0, this.gameWidth, this.gameHeight);
-      context.fillStyle = "rgba(0, 0, 0, 0.5)";
-      context.fill();
-      context.font = "13px Arial";
-      context.fillStyle = '#FFFFFF';
-      context.textAlign = "center";
-      context.fillText("Game Over", this.gameWidth /2, this.gameHeight / 2);
+      this.showGameOverScreen(context);
     } else {
       [...this.gameObjects, ...this.bricks].forEach((gameObject) => gameObject.draw(context));
     }
@@ -77,5 +60,33 @@ class GameManager {
     } else {
       this.gameState = gameStates.Paused;
     }
+  }
+  showGameOverScreen(context) {
+    context.rect(0, 0, this.gameWidth, this.gameHeight);
+    context.fillStyle = "rgba(0, 0, 0, 0.5)";
+    context.fill();
+    context.font = "13px Arial";
+    context.fillStyle = '#FFFFFF';
+    context.textAlign = "center";
+    context.fillText("Game Over", this.gameWidth /2, this.gameHeight / 2);
+    context.fillText("Press space to restart", this.gameWidth /2, (this.gameHeight / 2) + 15);
+  }
+  showPauseScreen(context) {
+    context.rect(0, 0, this.gameWidth, this.gameHeight);
+    context.fillStyle = "rgba(0, 0, 0, 0.5)";
+    context.fill();
+    context.font = "13px Arial";
+    context.fillStyle = '#FFFFFF';
+    context.textAlign = "center";
+    context.fillText("Paused", this.gameWidth /2, this.gameHeight / 2);
+  }
+  showGameMenu(context) {
+    context.rect(0, 0, this.gameWidth, this.gameHeight);
+    context.fillStyle = "rgba(0, 0, 0, 0.5)";
+    context.fill();
+    context.font = "13px Arial";
+    context.fillStyle = '#FFFFFF';
+    context.textAlign = "center";
+    context.fillText("Press Space to Begin", this.gameWidth /2, this.gameHeight / 2);
   }
 }
