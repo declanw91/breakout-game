@@ -3,6 +3,27 @@ body {
   background-repeat: repeat, repeat;
 }
 
+#pageNav {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#brand {
+  display: inline-block;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+#brand span {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+#gameController {
+  vertical-align: middle;
+}
+
 #gameArea {
   width: 75%;
   height: 75%;
@@ -15,14 +36,23 @@ body {
 }
 
 #pageHeaderWrapper, #gameFooter {
-  background: #f7f7f7;
+  background: rgb(247, 247, 247, 0.8);
   text-align: center;
 }
 
-img {
+img.gameImage {
   display: none;
 }
 
-ul {
-  list-style: none;
+#controlListWrapper, #brickTypeWrapper {
+  margin: 0 auto;
+  width: 25%;
+}
+
+#brickTypeWrapper {
+  width: 35%;
+}
+
+#controlListWrapper ul, #gameFooter ul {
+  text-align: left;
 }
